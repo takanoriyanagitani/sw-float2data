@@ -18,3 +18,8 @@ public func append(raw: UnsafeRawPointer, count: Int, dat: inout Data) {
   )
   append(ptr: ptr, count: count, dat: &dat)
 }
+
+public func copy(raw: UnsafeRawPointer, count: Int, dat: inout Data) {
+  dat.removeAll(keepingCapacity: true)
+  append(raw: raw, count: count, dat: &dat)
+}
