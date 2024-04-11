@@ -12,6 +12,10 @@ public func append(ptr: UnsafePointer<Float32>, count: Int, dat: inout Data) {
   append(buf: buf, dat: &dat)
 }
 
+/// Appends raw byte values to the given `Data`.
+/// - parameter raw: A pointer to data to be appended.
+/// - parameter count: Number of values(not bytes) to be appended.
+/// - parameter dat: The data to append byte values.
 public func append(raw: UnsafeRawPointer, count: Int, dat: inout Data) {
   let ptr: UnsafePointer<Float32> = raw.assumingMemoryBound(
     to: Float32.self
