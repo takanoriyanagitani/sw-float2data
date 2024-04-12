@@ -13,8 +13,8 @@ public func append(ptr: UnsafePointer<Float32>, count: Int, dat: inout Data) {
 }
 
 /// Appends raw byte values to the given `Data`.
-/// - parameter raw: A pointer to data to be appended.
-/// - parameter count: Number of values(not bytes) to be appended.
+/// - parameter raw: The pointer to data to be appended.
+/// - parameter count: The number of values(not bytes) to be appended.
 /// - parameter dat: The data to append byte values.
 public func append(raw: UnsafeRawPointer, count: Int, dat: inout Data) {
   let ptr: UnsafePointer<Float32> = raw.assumingMemoryBound(
@@ -23,6 +23,10 @@ public func append(raw: UnsafeRawPointer, count: Int, dat: inout Data) {
   append(ptr: ptr, count: count, dat: &dat)
 }
 
+/// Copies raw byte values to the given `Data`.
+/// - parameter raw: The pointer to data to be copied.
+/// - parameter count: The number of values(not bytes) to be copied.
+/// - parameter dat: The data to copy byte values.
 public func copy(raw: UnsafeRawPointer, count: Int, dat: inout Data) {
   dat.removeAll(keepingCapacity: true)
   append(raw: raw, count: count, dat: &dat)
